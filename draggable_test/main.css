@@ -1,0 +1,12 @@
+.drag-wrapper {
+	border: 2px solid black;
+}
+
+.draggable {
+	border: 1px solid black;
+}
+
+.droppable{
+	height: 100px;
+	border: 2px solid black;
+}
