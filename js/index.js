@@ -93,7 +93,11 @@ $(document).ready(function(){
 		$( ".droppable" ).droppable({
 			accept:'.draggable',
 			drop: function( event, ui ) {
-	    		ui.draggable.detach().appendTo($(this));
+				console.log($(ui.draggable).text());
+				ui.draggable.detach().appendTo($(this));
+	    		const userChoice = $(ui.draggable).text();
+	    		$(this).text(userChoice);
+	    		$(this).css('background-color', '#7FB800');
 	  		}
 		});
 		toggleDisplay('.m-choice');
@@ -104,10 +108,10 @@ $(document).ready(function(){
 			`<div class="col-4">
 				<div class="card">
 					<div class="image-wrapper">
-						<span>${img.alt}</span>
 						<img class="img" data-answer="${img.answer}" src="${img.pic}" alt="${img.alt}"/>
 					</div>
 					<div class="droppable answer-box">
+						<span class="description">${img.alt}</span>
 						<p>Place your answer here!</p>
 					</div>
 				</div>
@@ -183,7 +187,7 @@ $(document).ready(function(){
 		shuffleCards();
 		renderAnswers();
 		var selectors = ['.correct.top','.correct.bottom','.incorrect','.line']
-		$('.start .col-12').toggleClass('col-6 col-12');
+		$('.start .col-12.fmk').toggleClass('col-6 col-12');
 		selectors.map((selector) => toggleDisplay(selector));
 		state.correct = 0;
 		state.incorrect = 0;
