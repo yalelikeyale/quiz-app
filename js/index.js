@@ -29,18 +29,6 @@ $(document).ready(function(){
 		$('.js-tally-incorrect').html(state.incorrect);
 	}
 
-	function answerResponse (correct){
-		if(correct){
-			alert("Nice one, obviously you'd fuck the burrito here");
-			state.correct += 1;
-			tallyCorrect()
-		} else {
-			alert("I don't think we can be friends");
-			state.incorrect += 1;
-			tallyIncorrect();
-		}
-	}
-
     function checkAnswers(){
     	state.correctCount = 0;
     	$('.line-up').find('.card').each(function(){
@@ -50,23 +38,43 @@ $(document).ready(function(){
     		userAnswer = String(userAnswer);
     		userAnswer = userAnswer.trim();
     		if(userAnswer===''){
-    			console.log('made it here');
     			state.nextQuestion = false;
     			return false
     		} else {
 	    		if(correct.toLowerCase()===userAnswer.toLowerCase()){
 	    			state.correctCount += 1;
-	    		} else{
-	    			return false
 	    		}
     		}
     	});
     	if(state.nextQuestion===true){
-	    	if(state.correctCount===3){
-	    		answerResponse(true);
-	    	} else {
-		    	answerResponse(false);
-    		} 
+    		if(state.correctCount===3){
+				alert("Nice one, obviously you'd fuck the burrito here");
+				state.correct += 1;
+				tallyCorrect()
+				if(state.round===5){
+					renderEnd();
+				} else {
+					shuffleCards();
+    				renderAnswers();
+				}
+    		} else {
+    			alert("I don't think we can be friends");
+				state.incorrect += 1;
+				tallyIncorrect();
+				if(state.round===5){
+					renderEnd();
+				} else {
+					shuffleCards();
+    				renderAnswers();
+				}
+    		}
+    	} else {
+    		alert('I know this game can leave you choosing between a turdsandwich and a douche, but you have to choose all three.')
+    		state.round -= 1;
+    		state.correctCount = 0;
+    		state.nextQuestion = true;
+    		shuffleCards();
+    		renderAnswers();
     	}
     }
 
@@ -91,7 +99,6 @@ $(document).ready(function(){
 		toggleDisplay('.m-choice');
 	}
 
-
 	function renderCards(img){
 		var card = 
 			`<div class="col-4">
@@ -110,14 +117,22 @@ $(document).ready(function(){
 
 	function renderAnswers(img){
 		var answers = 
-			`<div class="draggable">
-          		<span>Fuck</span>
-        	</div>
-        	<div class="draggable">
-          		<span>Marry</span>
-        	</div>
-        	<div class="draggable">
-          		<span>Kill</span>
+			`<div class="row"> 
+				<div class="col-4">
+					<div class="draggable">
+          				<span>Fuck</span>
+        			</div>
+        		</div>
+        		<div class="col-4">
+        			<div class="draggable">
+          				<span>Marry</span>
+        			</div>
+        		</div>
+        		<div class="col-4">
+        			<div class="draggable">
+          				<span>Kill</span>
+        			</div>
+        		</div>
         	</div>`	
         $('.answer-wrapper').html(answers);
         $('.draggable').draggable({
@@ -139,6 +154,7 @@ $(document).ready(function(){
     		tallyIncorrect();
     		renderGamePlay();
     	});
+    	$('.title').html(`You got ${state.correct} out of 5 correct`)
     	if(state.correct === 5){
 	  		var correctBackground = 
 				`<div class="col-12">
@@ -162,34 +178,17 @@ $(document).ready(function(){
     	}
     }
 
-    function refreshCard(){
-    	shuffleCards();
-    	renderAnswers();
-    }
-
 	function renderGamePlay(){
 		toggleButton('.play-button', 'Submit', 'submit-button');
 		shuffleCards();
 		renderAnswers();
-		var selectors = ['.correct.top','.correct.bottom','.incorrect']
+		var selectors = ['.correct.top','.correct.bottom','.incorrect','.line']
+		$('.start .col-12').toggleClass('col-6 col-12');
 		selectors.map((selector) => toggleDisplay(selector));
 		state.correct = 0;
 		state.incorrect = 0;
-		console.log(state.round);
 		$('.submit-button').on('click', function(){
 			checkAnswers();
-			if(state.nextQuestion===true){
-				if(state.round===5){
-					renderEnd();
-				} else {
-					shuffleCards();
-					renderAnswers();
-				}
-			} else {
-				alert('Please select an option for each image')
-				//NEED TO REFRESH ANSWERS AND RESTART AT CORRECT BATCH
-				refreshCard();
-			}
 		})
 	}
 

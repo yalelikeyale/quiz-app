@@ -18,37 +18,40 @@
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-  <section class="standard">
+  <section class="start">
     <header role="title">
       <div class="row">
         <div class="col-3">
-          <h3 class="correct top hide-it">Nice! - <span class="js-tally-correct">0</span></h3>
+          <h3 class="correct top hide-it">Correct: <span class="js-tally-correct">0</span></h3>
         </div>
-        <div class="col-6">
+        <div class="col-12">
           <h1 class="game">F*CK MARRY KILL</h1>
           <h3 class="title">Life is Full of Tough Decisions</h3>
         </div>
         <div class="col-3">
-          <h3 class="correct bottom hide-it">Nice! - <span class="js-tally-correct">0</span></h3>
+          <h3 class="correct bottom hide-it">Nice: <span class="js-tally-correct">0</span></h3>
         </div>
         <div class="col-3">
-          <h3 class="incorrect hide-it">Botched it :( - <span class="js-tally-incorrect">0</span></h3>
+          <h3 class="incorrect hide-it">Incorrect: <span class="js-tally-incorrect">0</span></h3>
         </div>
       </div>
+      <hr class="line hide-it"/>
     </header>
 
     <main role="main">
       <div class="answer-wrapper">
 
       </div>
-      <div class="row line-up">
+      <div class="game-board">
+	      <div class="row line-up">
 
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <input type="button" value="Let's Play" id="play" class="play-button">
-        </div>
-      </div>      
+	      </div>  	
+	      <div class="row">
+	        <div class="col-12">
+	          <input type="button" value="Let's Play" id="play" class="play-button">
+	        </div>
+	      </div> 
+      </div>     
     </main>
   </section>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
