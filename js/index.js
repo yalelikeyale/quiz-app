@@ -6,6 +6,7 @@ $(document).ready(function(){
 		'images':{'burrito':{'pic':'images/burrito.jpeg','alt':'A Burrito','answer':'marry'},'pizza':{'pic':'images/pizza.jpeg','alt':'A Pizza','answer':'kill'},'chicken':{'pic':'images/fried_chicken.jpeg','alt':'Fried Chicken','answer':'f*ck'},'crossfit':{'pic':'images/crossfit.jpeg','alt':'Someone who does crossfit','answer':'f*ck'},'vegan':{'pic':'images/vegan.jpg','alt':'A Vegan','answer':'kill'},'bitcoin':{'pic':'images/bitcoin_trader.jpg','alt':'A Bitcoin Trader','answer':'marry'},'baldwin':{'pic':'images/baldwin_trump.jpeg','alt':"Alec Baldwin on SNL",'answer':'marry'},'garrison':{'pic':'images/garrison_trump.jpeg','alt':'Mr Garrison as Trump on SouthPark','answer':'f*ck'},'cheeto':{'pic':'images/cheetoh_trump.jpeg','alt':'A Cheeto which is Orange, like Trump','answer':'kill'},'homer':{'pic':'images/homer.jpeg','alt':'Homer Simpson','answer':'kill'},'peter':{'pic':'images/family_guy.jpeg','alt':'Peter Griffin','answer':'f*ck'},'randy':{'pic':'images/randy.jpeg','alt':'Randy Marsh','answer':'marry'},'kim':{'pic':'images/kim.jpeg','alt':'Kim Jung Un','answer':'f*ck'},'hitler':{'pic':'images/hitler.jpeg','alt':'Hitler','answer':'kill'},'poop':{'pic':'images/poop.jpeg','alt':'A literal piece of poop','answer':'marry'}},
 		'batches':[['burrito','pizza','chicken'],['crossfit','vegan','bitcoin'],['baldwin','garrison','cheeto'],['peter','randy','homer'],['kim','hitler','poop']],
 		'category':['What could you eat for the rest of your life...','A crossfit athlete, a vegan, and a bitcoin trader walk into a bar...','Best Trump Impression...','Best Cartoon Dad...','A shitshow...'],
+		'response':['Great answer! Clearly a burrito is going to be the kind of provider we need','You got it! With how Bitcoin has been performing, call me a gold digger','One step closer to friendship, gotta love Baldwin as Trump!','Randy is the funniest cartoon character of all time.','This one is tough, but on the bright side poo cannot put you in a labor camp if you misbehave.'],
 		'correct':0,
 		'incorrect':0,
 		'correctCount':0,
@@ -29,45 +30,15 @@ $(document).ready(function(){
 		$('.js-tally-incorrect').html(state.incorrect);
 	}
 
-	$(".cancel").on("click", function(e) {
-  		e.preventDefault();
-  		$(this).trigger("expose:close");
-	});
-
-	$.fn.expose = function(options) {
-		console.log('made it here');
-		var $modal = $(this),
-		$trigger = $("a[href=" + this.selector + "]");
-		console.log($modal);
-		
-		$modal.on("expose:open", function() {
-
-			$modal.addClass("is-visible");
-			$modal.trigger("expose:opened");
-		});
-
-		$modal.on("expose:close", function() {
-			$modal.removeClass("is-visible");
-			$modal.trigger("expose:closed");
-		});
-
-		$trigger.on("click", function(e) {
-			e.preventDefault();
-			$modal.trigger("expose:open");
-		});
-
-		$modal.add( $modal.find(".close") ).on("click", function(e) {
-
-			e.preventDefault();
-
-			// if it isn't the background or close button, bail
-			if( e.target !== this )
-			  return;
-
-			$modal.trigger("expose:close");
-		});
-
-		return;
+	function answerResponse(correct){
+		if(correct==='correct'){
+			console.log($('.pop-up'));
+			$('.popup .p1').html(state.response[state.round -1]);
+		} else {
+			console
+			$('.popup .p1').html("I don't think this is going to work out...");
+		}
+		$('[data-popup="popup-1"]').fadeIn(350);
 	}
 
     function checkAnswers(){
@@ -91,7 +62,7 @@ $(document).ready(function(){
     	});
     	if(state.nextQuestion===true){
     		if(state.correctCount===3){
-				alert("Nice one, obviously you'd f*ck the burrito here");
+				answerResponse('correct');
 				state.correct += 1;
 				tallyCorrect()
 				if(state.round===5){
@@ -101,7 +72,7 @@ $(document).ready(function(){
     				renderAnswers();
 				}
     		} else {
-    			alert("I don't think we can be friends");
+    			answerResponse('incorrect');
 				state.incorrect += 1;
 				tallyIncorrect();
 				if(state.round===5){
@@ -226,9 +197,11 @@ $(document).ready(function(){
 
 	function renderGamePlay(){
 		toggleButton('.play-button', 'SUBMIT', 'submit-button');
+		toggleDisplay('.instruct-title');
+		$('.popup .p2').remove();
 		shuffleCards();
 		renderAnswers();
-		var selectors = ['.correct.top','.correct.bottom','.incorrect','.line']
+		var selectors = ['.correct.top','.correct.bottom','.incorrect','.line','.btn']
 		$('.start .col-12.fmk').toggleClass('col-6 col-12');
 		selectors.map((selector) => toggleDisplay(selector));
 		state.correct = 0;
@@ -253,7 +226,17 @@ $(document).ready(function(){
 		renderGamePlay();
 	})
 
-	$("#Popup").expose();
+	$('[data-popup-open]').on('click', function(e)  {
+		var targeted_popup_class = $(this).attr('data-popup-open');
+		$('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+		e.preventDefault();
+	});
+
+	$('[data-popup-close]').on('click', function(e)  {
+		var targeted_popup_class = jQuery(this).attr('data-popup-close');
+		$('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+		e.preventDefault();
+	});
 
 	renderStart()
 });

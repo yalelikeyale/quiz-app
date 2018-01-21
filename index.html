@@ -36,13 +36,20 @@
           <h1 class="game">F*CK MARRY KILL</h1>
           <hr class="title-underline">
           <h3 class="title">Life is Full of Tough Decisions</h3>
-          <a href="#Popup" class="modal_button">Instructions</a>
-          <div id="Popup" class="Modal">
-            <div class="content">
-              <h2>Hey look at me being some content</h2>
-              <p>We all know content needs a friendly sentence.</p>
-              <a href="#" class="cancel">Cancel</a>
-              <span class="close">
+          <div class="instruction-wrapper">
+              <h3><a class="btn" data-popup-open="popup-1" data-tooltip="Instructions" href="#">i</a></h3>           
+          </div>
+          <div class="popup" data-popup="popup-1">
+            <div class="popup-inner">
+              <h2 class="instruct-title">How to play F*CK Marry Kill</h2>
+              <hr>
+              <p class="p1">Each round will be composed of three images that all fall within a category. You must match each image with the option of f*ck'ing, marrying, or killing what that image represents. You can only use each option once and all three options must be selected.
+              </p>
+              <p class="p2">
+                After each round, your answers will be compared with mine to see if we agree and thus be "friends". In order for us to wind up being pals, we must agree on all five rounds. 
+              </p>
+              <p><a data-popup-close="popup-1" href="#">Close</a></p>
+              <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
             </div>
           </div>
         </div>
