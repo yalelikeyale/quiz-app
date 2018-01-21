@@ -3,8 +3,20 @@ header {
   background-color: #00A6ED;
 }
 
-.title {
+.fmk .game {
   text-align: center;
+  font-family: 'VT323', monospace;
+  font-size: 50px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.fmk .title {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  color: white;
+  margin-bottom: 0;
 }
 
 .hide-it{
@@ -97,16 +109,11 @@ header h1 {
   height: 300px;
 }
 
-.answer-response {
-  width: 50%;
-  height: 50%;
-}
-
 .ui-draggable {
-  border: 1px solid #0D2C54;
   border-radius: 5px;
   padding: 3px;
   background-color: #F6511D;
+  color: white;
 }
 
 .ui-draggable span {
@@ -115,15 +122,18 @@ header h1 {
 }
 
 .droppable {
-  border: 2px solid #0D2C54;
+  padding-top: 3px;
   border-radius: 5px;
   text-align: center;
   height: 50px;
   background-color: #FFB400;
+  color: white;
 }
+
 
 .droppable p {
   margin: 0;
+  font-style: italic;
 }
 
 .button.row{
@@ -139,6 +149,8 @@ header h1 {
   background-color: #00A6ED;
   border-radius: 5px;
   padding: 20px;
+  color: white;
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 640px) {

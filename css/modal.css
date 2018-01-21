@@ -1,0 +1,70 @@
+.Modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  
+  .content {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 50%;
+    padding: 50px;
+    border-radius: 3px;
+    background: #fff;
+    transform: translate(-50%, -30%) scale(0);
+  }
+  
+  .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: block;
+    width: 18px;
+    height: 18px;
+    padding: 5px;
+    line-height: 18px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    background: #A38CDC;
+    color: #fff;
+    &:before {
+    	content: '\2715';
+    }
+  }
+  
+  &.is-visible {
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background .35s;
+    transition-delay: .1s; // just delay enough to make modal visible before transitiong bg
+
+    .content {
+      transform: translate(-50%, -30%) scale(1);
+      transition: transform .35s;
+    }
+  }
+}
+
+
+body {
+  background: #FBFAF5;
+}
+
+.modal_button {
+  display: block;
+  width: 150px;
+  height: 45px;
+  line-height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 3px;
+  text-align: center;
+  text-decoration: none;
+  /* background: #A38CDC; */
+  color: white;
+}
