@@ -26,8 +26,9 @@
   padding-right: 1.04166666%;
 }
 
-..col-4, .col-6, .col-12{
+.col-4, .col-6, .col-12{
   width: 100%;
+  min-height: 20px;
 }
 
 .col-3{
@@ -40,7 +41,8 @@
     width: 25%;
   }
   .col-4 {
-    width: 33.33%;
+    width:33.33%;
+    min-width: 33.33%;
   }
   .col-6 {
     width: 50%;
