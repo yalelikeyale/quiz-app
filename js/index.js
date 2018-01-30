@@ -32,10 +32,8 @@ $(document).ready(function(){
 
 	function answerResponse(correct){
 		if(correct==='correct'){
-			console.log($('.pop-up'));
 			$('.popup .p1').html(state.response[state.round -1]);
 		} else {
-			console
 			$('.popup .p1').html("I don't think this is going to work out...");
 		}
 		$('[data-popup="popup-1"]').fadeIn(350);
@@ -45,15 +43,13 @@ $(document).ready(function(){
     	state.correctCount = 0;
     	$('.line-up').find('.card').each(function(){
     		var correct = $(this).find('.img').attr('data-answer');
-    		console.log(correct);
     		correct = String(correct);
-    		var userAnswer = $(this).find('.ui-droppable.answer-box').text();
+    		var userAnswer = $(this).find('.ui-droppable.answer-box.answered').text();
     		userAnswer = String(userAnswer);
     		userAnswer = userAnswer.trim();
     		console.log(userAnswer);
     		if(userAnswer===''){
     			state.nextQuestion = false;
-    			return false
     		} else {
 	    		if(correct.toLowerCase()===userAnswer.toLowerCase()){
 	    			state.correctCount += 1;
@@ -111,6 +107,7 @@ $(document).ready(function(){
 	    		const userChoice = $(ui.draggable).text();
 	    		$(this).text(userChoice);
 	    		$(this).css({'background-color':'#7FB800','line-height':'2.5'});
+	    		$(this).addClass('answered');
 	  		}
 		});
 		toggleDisplay('.m-choice');
