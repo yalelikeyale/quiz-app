@@ -67,7 +67,7 @@ header {
   display: none;
 }
 
-.incorrect {
+.incorrect, .correct {
   text-align: center;
 }
 
@@ -117,6 +117,7 @@ header h1 {
 }
 
 .ui-draggable {
+  margin: 2px;
   border-radius: 5px;
   padding: 3px;
   background-color: #F6511D;
@@ -233,6 +234,12 @@ header h1 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
+}
+
+@media only screen and (max-width: 640px) {
+  .col-3.float {
+    float: right;
+  }
 }
 
 @media only screen and (min-width: 640px) {
