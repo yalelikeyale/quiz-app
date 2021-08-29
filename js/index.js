@@ -114,15 +114,6 @@ $(document).ready(function(){
 		$('.js-tally-incorrect').html(state.incorrect);
 	}
 
-	// function answerResponse(correct){
-	// 	if(correct==='correct'){
-	// 		$('.popup .p1').html(state.response[state.round -1]);
-	// 	} else {
-	// 		$('.popup .p1').html('<img class="image" src="images/you_sure.gif" alt="you_sure">');
-	// 	}
-	// 	$('[data-popup="popup-1"]').fadeIn(350);
-	// }
-
     function checkAnswers(){
     	state.correctCount = 0;
     	$('.line-up').find('.card').each(function(){
@@ -140,9 +131,8 @@ $(document).ready(function(){
 	    		}
     		}
     	});
-    	if(state.nextQuestion===true){
+    	if(state.nextQuestion===true ){
     		if(state.correctCount===3){
-				// answerResponse('correct');
 				state.correct += 1;
 				tallyCorrect()
 				if(state.round===5){
@@ -152,7 +142,6 @@ $(document).ready(function(){
     				renderAnswers();
 				}
     		} else {
-    			// answerResponse('incorrect');
 				state.incorrect += 1;
 				tallyIncorrect();
 				if(state.round===5){
@@ -252,8 +241,8 @@ $(document).ready(function(){
     		tallyIncorrect();
     		renderGamePlay();
     	});
-    	$('.title').html(`You got ${state.correct} out of 5 correct`)
-    	if(state.correct === 5){
+    	$('.title').html(`We agreed on ${state.correct} out of 5`)
+    	if(state.correct >= 3){
 	  		var correctBackground = 
 				`<div class="col-12">
 					<div class="card">
