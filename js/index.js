@@ -89,7 +89,7 @@ $(document).ready(function(){
 		  'You got it! With how Bitcoin has been performing, call me a gold digger',
 		  'One step closer to friendship, gotta love Baldwin as Trump!',
 		  'Randy is the funniest cartoon character of all time.',
-		  'Sometimes ya just gotta play the hits'
+		  'Sometimes ya just gotta go with the classics'
 		],
 		'correct':0,
 		'incorrect':0,
@@ -114,14 +114,14 @@ $(document).ready(function(){
 		$('.js-tally-incorrect').html(state.incorrect);
 	}
 
-	function answerResponse(correct){
-		if(correct==='correct'){
-			$('.popup .p1').html(state.response[state.round -1]);
-		} else {
-			$('.popup .p1').html("I don't think this is going to work out...");
-		}
-		$('[data-popup="popup-1"]').fadeIn(350);
-	}
+	// function answerResponse(correct){
+	// 	if(correct==='correct'){
+	// 		$('.popup .p1').html(state.response[state.round -1]);
+	// 	} else {
+	// 		$('.popup .p1').html('<img class="image" src="images/you_sure.gif" alt="you_sure">');
+	// 	}
+	// 	$('[data-popup="popup-1"]').fadeIn(350);
+	// }
 
     function checkAnswers(){
     	state.correctCount = 0;
@@ -142,7 +142,7 @@ $(document).ready(function(){
     	});
     	if(state.nextQuestion===true){
     		if(state.correctCount===3){
-				answerResponse('correct');
+				// answerResponse('correct');
 				state.correct += 1;
 				tallyCorrect()
 				if(state.round===5){
@@ -152,7 +152,7 @@ $(document).ready(function(){
     				renderAnswers();
 				}
     		} else {
-    			answerResponse('incorrect');
+    			// answerResponse('incorrect');
 				state.incorrect += 1;
 				tallyIncorrect();
 				if(state.round===5){
