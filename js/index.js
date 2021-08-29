@@ -3,10 +3,94 @@
 $(document).ready(function(){
 	const state = {
 		'round':0,
-		'images':{'burrito':{'pic':'images/burrito.jpeg','alt':'A Burrito','answer':'marry'},'pizza':{'pic':'images/pizza.jpeg','alt':'A Pizza','answer':'kill'},'chicken':{'pic':'images/fried_chicken.jpeg','alt':'Fried Chicken','answer':'f*ck'},'crossfit':{'pic':'images/crossfit.jpeg','alt':'Someone who does crossfit','answer':'f*ck'},'vegan':{'pic':'images/vegan.jpg','alt':'A Vegan','answer':'kill'},'bitcoin':{'pic':'images/bitcoin_trader.jpg','alt':'A Bitcoin Trader','answer':'marry'},'baldwin':{'pic':'images/baldwin_trump.jpeg','alt':"Alec Baldwin on SNL",'answer':'marry'},'garrison':{'pic':'images/garrison_trump.jpeg','alt':'Mr Garrison as Trump on SouthPark','answer':'f*ck'},'cheeto':{'pic':'images/cheetoh_trump.jpeg','alt':'A Cheeto which is Orange, like Trump','answer':'kill'},'homer':{'pic':'images/homer.jpeg','alt':'Homer Simpson','answer':'kill'},'peter':{'pic':'images/family_guy.jpeg','alt':'Peter Griffin','answer':'f*ck'},'randy':{'pic':'images/randy.jpeg','alt':'Randy Marsh','answer':'marry'},'kim':{'pic':'images/kim.jpeg','alt':'Kim Jung Un','answer':'f*ck'},'hitler':{'pic':'images/hitler.jpeg','alt':'Hitler','answer':'kill'},'poop':{'pic':'images/poop.jpeg','alt':'A literal piece of poop','answer':'marry'}},
-		'batches':[['burrito','pizza','chicken'],['crossfit','vegan','bitcoin'],['baldwin','garrison','cheeto'],['peter','randy','homer'],['kim','hitler','poop']],
-		'category':['What could you eat for the rest of your life...','A crossfit athlete, a vegan, and a bitcoin trader walk into a bar...','Best Trump Impression...','Best Cartoon Dad...','A shitshow...'],
-		'response':['Great answer! Clearly a burrito is going to be the kind of provider we need','You got it! With how Bitcoin has been performing, call me a gold digger','One step closer to friendship, gotta love Baldwin as Trump!','Randy is the funniest cartoon character of all time.','This one is tough, but on the bright side poo cannot put you in a labor camp if you misbehave.'],
+//this would be replaced by a database and image files stored in S3
+		'images':{
+			'burrito':{
+				'pic':'images/burrito.jpeg',
+				'alt':'A Burrito',
+				'answer':
+				'marry'
+			},
+			'pizza':{
+				'pic':'images/pizza.jpeg',
+				'alt':'A Pizza',
+				'answer':'kill'
+			},
+			'chicken':{
+				'pic':'images/fried_chicken.jpeg',
+				'alt':'Fried Chicken',
+				'answer':'f*ck'
+			},'crossfit':{
+				'pic':'images/crossfit.jpeg',
+				'alt':'Someone who does crossfit',
+				'answer':'f*ck'
+			},'vegan':{
+				'pic':'images/vegan.jpg',
+				'alt':'A Vegan',
+				'answer':'kill'
+			},'bitcoin':{
+				'pic':'images/bitcoin_trader.jpg',
+				'alt':'A Bitcoin Trader',
+				'answer':'marry'
+			},'baldwin':{
+				'pic':'images/baldwin_trump.jpeg',
+				'alt':"Alec Baldwin on SNL",
+				'answer':'marry'
+			},'garrison':{
+				'pic':'images/garrison_trump.jpeg',
+				'alt':'Mr Garrison as Trump on SouthPark',
+				'answer':'f*ck'
+			},'cheeto':{
+				'pic':'images/cheetoh_trump.jpeg',
+				'alt':'A Cheeto which is Orange, like Trump',
+				'answer':'kill'
+			},'homer':{
+				'pic':'images/homer.jpeg',
+				'alt':'Homer Simpson',
+				'answer':'kill'
+			},'peter':{
+				'pic':'images/family_guy.jpeg',
+				'alt':'Peter Griffin',
+				'answer':'f*ck'
+			},'randy':{
+				'pic':'images/randy.jpeg',
+				'alt':'Randy Marsh',
+				'answer':'marry'
+			},'russet':{
+				'pic':'images/russet_fries.jpeg',
+				'alt':'Russet Fries',
+				'answer':'marry'
+			},'curly':{
+				'pic':'images/curly_fries.jpeg',
+				'alt':'Curly Fries',
+				'answer':'f*ck'
+			},'waffle':{
+				'pic':'images/waffle_fries.jpeg',
+				'alt':'Waffle Fries',
+				'answer':'kill'
+			}
+		},
+		'batches':[
+		  ['burrito','pizza','chicken'],
+		  ['crossfit','vegan','bitcoin'],
+		  ['baldwin','garrison','cheeto'],
+		  ['peter','randy','homer'],
+		  ['curly','russet','waffle']
+		],
+		'category':[
+		  'What could you eat for the rest of your life...',
+		  'A crossfit athlete, a vegan, and a bitcoin trader walk into a bar...',
+		  'Best Trump Impression...',
+		  'Best Cartoon Dad...',
+		  'Picking between fries is tough, but so is life...'
+		],
+		'response':[
+		  'Great answer! Clearly a burrito is going to be the kind of provider we need',
+		  'You got it! With how Bitcoin has been performing, call me a gold digger',
+		  'One step closer to friendship, gotta love Baldwin as Trump!',
+		  'Randy is the funniest cartoon character of all time.',
+		  'Sometimes ya just gotta play the hits'
+		],
 		'correct':0,
 		'incorrect':0,
 		'correctCount':0,
